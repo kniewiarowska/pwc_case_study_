@@ -12,7 +12,7 @@ from sklearn.metrics import classification_report, confusion_matrix
 import matplotlib.pyplot as plt
 from sklearn import metrics
 import seaborn as sns
-##csvFilePath = "link to csv here"; # I didn't know if I can share the csv file on git hub. That's why i left this to fill with path. 
+##csvFilePath = "link to csv here"; # I didn't know if I can share the csv file on git hub. That's why I left this to fill with path. 
 df = pd.read_csv(csvFilePath, sep = '\",\"', header = 0, engine = 'python');
 
 percentTrainData = 0.9;
