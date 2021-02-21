@@ -12,7 +12,7 @@ from sklearn.metrics import classification_report, confusion_matrix
 import matplotlib.pyplot as plt
 from sklearn import metrics
 import seaborn as sns
-##csvFilePath = "link to csv here"; # I didn't know if I can share the csv file on git hub. That's why I left this to fill with path. 
+##csvFilePath = "link to csv here"; # I didn't know if I can share the csv file on github. That's why I left this to fill with path. 
 df = pd.read_csv(csvFilePath, sep = '\",\"', header = 0, engine = 'python');
 
 percentTrainData = 0.9;
@@ -22,7 +22,7 @@ decision = 0;
 # In[285]:
 
 
-#Function which prepare data from csv to analise (changing GEO to GEOx and GEOy, delating chars(,"),
+#Function which prepares data from csv to analise (changing GEO to GEOx and GEOy, delating chars(,"),
 #changing sector to numeric values with one hot encoding)
 def preapareDataFrameForAnalise(df):
     df[['\"ID\"','\"GEO\"']] = df["\"ID,\"\"GEO\""].str.split(',\"', expand=True);
