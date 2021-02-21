@@ -56,7 +56,7 @@ def handleNaNValues(df):
                 #TODO - change NaN to calculated median value
     return df;
 
-def makeConfusionMatrix(x, y):
+def makeConfusionMatrix(x, y, model):
     cm = confusion_matrix(y, model.predict(x))
     plt.figure(figsize=(8,8))
     sns.heatmap(cm, annot=True, fmt=".1f", linewidths=.5, square = True, cmap = 'Blues_r');
@@ -71,7 +71,7 @@ def makeModel(df):
     y = dfProbe.pop("FLAG");
     x = dfProbe;
     model.fit(x, y);
-    makeConfusionMatrix(x,y);
+    makeConfusionMatrix(x,y, model);
     print(classification_report(y, model.predict(x)))
     return model;
 
@@ -82,7 +82,7 @@ def checkHowGoodModelIs(model, df):
     result = model.predict(testData);
     print(str(model.score(testData, dfFlag)*100) + "% of result was up to expecations");
     print(classification_report(dfFlag, result))
-    makeConfusionMatrix(testData,dfFlag);
+    makeConfusionMatrix(testData,dfFlag, model);
   
   
 def checkData(model, df): 
@@ -95,33 +95,21 @@ def checkData(model, df):
         print("Chance for company survive: " + str(model.predict_proba(df)[i][1]))
     
 
-    
-
-
 # In[286]:
-
-
 
 df = preapareDataFrameForAnalise(df);
 
-
 # In[287]:
-
 
 df = handleNaNValues(df);
 
-
 # In[288]:
-
 
 model = makeModel(df);
 
-
 # In[289]:
 
-
 checkHowGoodModelIs(model, df);
-
 
 # In[ ]:
 
